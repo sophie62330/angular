@@ -1,0 +1,78 @@
+
+<div>
+    <button (click)="affiche()">afficher</button>
+    <button (click)="changeActive()"> Actifs/Inactifs </button>
+
+</div>
+    <table *ngIf="showAll">
+        <tr class="title">
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Titre</th>
+            <th>Statut</th>
+            <th>Changer statut</th>
+        </tr>
+        
+        <tr *ngFor="let personnage of listePersonnages">
+            <td>{{personnage.id}}</td>
+            <td>{{personnage.name}}</td>
+            <td>{{personnage.title}}</td>
+            <td>{{personnage.active}}</td>
+            <td><input type="checkbox" (click)="btnRadio(personnage)"></td>
+            <td><button (click)="delete(personnage.id!)">Supprimer</button></td>
+        </tr>
+        
+        <tr *ngFor="let personnage of personnages; let i = index">
+            <td>{{personnage.id}}</td>
+            <td>{{personnage.name}}</td>
+            <td>{{personnage.title}}</td>
+            <td>{{personnage.active}}</td>
+            <td><input type="checkbox" (click)="btnRadio(personnage)"></td>
+            <td><button (click)="delete(personnage.id!)">Supprimer</button></td>
+        </tr>
+    </table>
+
+    <div *ngIf="!showAll">
+    <table *ngIf="showActive">
+        <tr class="title">
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Titre</th>
+            <th>Statut</th>
+            <th>Changer statut</th>
+        </tr>
+        
+        <tr *ngFor="let personnage of listePersonnages">
+            <td *ngIf="personnage.active">{{personnage.id}}</td>
+            <td *ngIf="personnage.active">{{personnage.name}}</td>
+            <td *ngIf="personnage.active">{{personnage.title}}</td>
+            <td *ngIf="personnage.active">{{personnage.active}}</td>
+            <td *ngIf="personnage.active"><input type="checkbox" (click)="btnRadio(personnage)"></td>
+            <td *ngIf="personnage.active"><button (click)="delete(personnage.id!)">Supprimer</button></td>
+        </tr>
+    </table>
+
+    <table *ngIf="!showActive">
+        <tr class="title">
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Titre</th>
+            <th>Statut</th>
+            <th>Changer statut</th>
+        </tr>
+        
+        <tr *ngFor="let personnage of listePersonnages">
+            <td *ngIf="!personnage.active">{{personnage.id}}</td>
+            <td *ngIf="!personnage.active">{{personnage.name}}</td>
+            <td *ngIf="!personnage.active">{{personnage.title}}</td>
+            <td *ngIf="!personnage.active">{{personnage.active}}</td>
+            <td *ngIf="!personnage.active"><input type="checkbox" (click)="btnRadio(personnage)"></td>
+            <td *ngIf="!personnage.active"><button (click)="delete(personnage.id!)">Supprimer</button></td>
+        </tr>
+    </table>
+    </div>
+
+
+
+    
+   
